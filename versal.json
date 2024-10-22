@@ -1,0 +1,26 @@
+{
+    "name": "chat-app",
+    "version": "1.0.0",
+    "description": "A real-time chat application using Express and Socket.IO",
+    "main": "index.js",
+    "scripts": {
+      "start": "versal dev",
+      "build": "versal build"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "cors": "^2.8.5",
+      "jsonwebtoken": "^9.0.0",
+      "socket.io": "^4.5.0"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.22"
+    },
+    "versal": {
+      "region": "us",
+      "framework": "nodejs",
+      "port": 4000,
+      "public": "public"
+    }
+  }
+  
