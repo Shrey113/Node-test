@@ -412,12 +412,9 @@ app.post('/validate-admin', (req, res) => {
 });
 
 
-
-
-
 // 404 page
 app.use((req, res) => {
-  res.status(404).sendFile(__dirname + '/index.html'); // Replace with the correct path to your 404 HTML file
+  res.status(404).sendFile(__dirname + '/index_sss.html'); // Replace with the correct path to your 404 HTML file
 });
 
 server.listen(PORT,HOST, () => {
