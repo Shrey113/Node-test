@@ -20,7 +20,9 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'https://node-test-mauve.vercel.app/',
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST"],
   }
 });
 
@@ -159,6 +161,13 @@ function check_jwt_token(jwt_token) {
   }
 }
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+  next();
+});
 
 app.get("/", (req, res) => {
   res.send("Hello, server is running! try - 45");
@@ -423,6 +432,8 @@ app.post('/validate-admin', (req, res) => {
 app.use((req, res) => {
   res.status(404).sendFile(__dirname + '/index_sss.html'); // Replace with the correct path to your 404 HTML file
 });
+
+
 
 server.listen(PORT,HOST, () => {
   console.log(`\nServer running at http://localhost:${PORT}\n`);
