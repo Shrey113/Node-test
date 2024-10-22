@@ -2,7 +2,7 @@
     "name": "chat-app",
     "version": "1.0.0",
     "description": "A real-time chat application using Express and Socket.IO",
-    "main": "Server/server.js",
+    "main": "index.js",
     "scripts": {
       "start": "versal dev",
       "build": "versal build"
