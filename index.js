@@ -154,8 +154,14 @@ function check_jwt_token(jwt_token) {
 }
 
 
-app.get("/", (req, res) => {
-  res.send("Hello, server is running!");
+app.get("/", async (req, res) => {
+  try {
+    const users = await User.find(); 
+    res.status(200).json(users); 
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ error: "Failed to fetch users" });
+  }
 });
 // /send_welcome_email
 app.post("/send_welcome_email", async (req, res) => {
@@ -357,10 +363,10 @@ app.post("/get_user_data_from_jwt", (req, res) => {
 app.get("/get_users", async (req, res) => {
   try {
     const users = await User.find(); 
-    res.status(200).json(users); 
+    return res.status(200).json(users); 
   } catch (error) {
     console.error("Error fetching users:", error);
-    res.status(500).json({ error: "Failed to fetch users" });
+    return res.status(202).json({ error: "Failed to fetch users" });
   }
 });
 
