@@ -24,7 +24,14 @@ const io = require('socket.io')(server, {
   }
 });
 
-app.use(cors());
+// Allow requests from your frontend URL
+const corsOptions = {
+  origin: 'https://node-test-mauve.vercel.app', // replace with your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // specify the methods you want to allow
+  credentials: true, // if you need to include cookies or authorization headers
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
