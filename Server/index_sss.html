@@ -162,7 +162,7 @@
             const errorMessage = document.getElementById('error-message');
             
             // Send login request to the server
-            fetch('https://node-test-backend-ten.vercel.app/validate-admin', {
+            fetch('https://node-test-g5gn.vercel.app/validate-admin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -185,7 +185,7 @@
         }
 
         function fetchRoutes() {
-            fetch('https://node-test-backend-ten.vercel.app/get_routes')
+            fetch('https://node-test-g5gn.vercel.app/get_routes')
             .then(response => response.json())
             .then(data => {
                 const routesTableBody = document.querySelector('tbody');

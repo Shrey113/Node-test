@@ -68,7 +68,7 @@ const ChangePassword = ({close_by_other_file_function}) => {
       return;
     }
 
-    fetch('https://node-test-backend-ten.vercel.app/send_otp_email_if_exists', {
+    fetch('https://node-test-g5gn.vercel.app/send_otp_email_if_exists', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
@@ -98,7 +98,7 @@ const ChangePassword = ({close_by_other_file_function}) => {
       return;
     }
 
-    fetch('https://node-test-backend-ten.vercel.app/verify_otp', {
+    fetch('https://node-test-g5gn.vercel.app/verify_otp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, otp: OTP }),
@@ -146,7 +146,7 @@ const ChangePassword = ({close_by_other_file_function}) => {
       return;
     }
 
-    fetch('https://node-test-backend-ten.vercel.app/change_user_password', {
+    fetch('https://node-test-g5gn.vercel.app/change_user_password', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: Forgot_form_data.email, newPassword: Forgot_form_data.password }),

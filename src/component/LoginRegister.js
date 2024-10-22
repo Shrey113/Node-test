@@ -90,7 +90,7 @@ function LoginRegister() {
       return;
     }
 
-    fetch('https://node-test-backend-ten.vercel.app/login_user', {
+    fetch('https://node-test-g5gn.vercel.app/login_user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ function LoginRegister() {
     } else {
       set_signup_email_error('');
 
-      fetch('https://node-test-backend-ten.vercel.app/send_otp_email', {
+      fetch('https://node-test-g5gn.vercel.app/send_otp_email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -184,7 +184,7 @@ function LoginRegister() {
       return;
     }
 
-    fetch('https://node-test-backend-ten.vercel.app/verify_otp', {
+    fetch('https://node-test-g5gn.vercel.app/verify_otp', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -257,7 +257,7 @@ function LoginRegister() {
     }
     if (valid) {
       set_signup_email_error("")
-          fetch('https://node-test-backend-ten.vercel.app/add_user', {
+          fetch('https://node-test-g5gn.vercel.app/add_user', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
