@@ -59,7 +59,7 @@ function HomePage() {
   useEffect(() => {
     const token = window.localStorage.getItem(localstorage_key_for_jwt_user_side_key);
     if (token) {
-      fetch('http://localhost:4000/get_user_data_from_jwt', {
+      fetch('https://node-test-backend-ten.vercel.app/get_user_data_from_jwt', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
