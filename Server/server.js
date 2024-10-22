@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require("cors");
 const jwt = require('jsonwebtoken');
 const socket_io  = require("socket.io");
-
 const http = require("http")
 const HOST = '0.0.0.0';
 const {write_log_file,error_message,info_message,success_message,normal_message} = require('./modules/_all_help');
@@ -21,7 +20,7 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'https://node-test-jafv-eea70sv8a-shrey113s-projects.vercel.app/',
+    origin: 'http://localhost:3000',
   }
 });
 
@@ -154,14 +153,8 @@ function check_jwt_token(jwt_token) {
 }
 
 
-app.get("/", async (req, res) => {
-  try {
-    const users = await User.find(); 
-    res.status(200).json(users); 
-  } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).json({ error: "Failed to fetch users" });
-  }
+app.get("/", (req, res) => {
+  res.send("Hello, server is running!");
 });
 // /send_welcome_email
 app.post("/send_welcome_email", async (req, res) => {
@@ -363,10 +356,10 @@ app.post("/get_user_data_from_jwt", (req, res) => {
 app.get("/get_users", async (req, res) => {
   try {
     const users = await User.find(); 
-    return res.status(200).json(users); 
+    res.status(200).json(users); 
   } catch (error) {
     console.error("Error fetching users:", error);
-    return res.status(202).json({ error: "Failed to fetch users" });
+    res.status(500).json({ error: "Failed to fetch users" });
   }
 });
 

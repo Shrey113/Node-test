@@ -1,0 +1,185 @@
+#home_page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(255, 0, 0, 0.252);
+    height: 100vh;
+} 
+:root {
+/*  */
+    --main_height_for_ui:97.5%;
+
+    /* coloer set */
+    --main_color: #855ba8;
+    --color_for_ui: #218e54;
+    --main_color_shado: #9b9b9b15;
+    --gray_text_color:rgb(121, 120, 120);
+    --gray_color:#373736;
+    
+
+    --dark_mode_bg:#202121;
+    --dark_mode_bg_2:#2c2c2c;
+    --dark_mode_text:white;
+    
+    --light_mode_bg:#e3e0e0;
+    --light_mode_bg_2:#f3f3f3;
+    --light_mode_text:rgb(0, 0, 0);
+
+
+    /*  */
+    --send_message_dark_bg:#015c4a;
+    --send_message_light_bg:#07a183;
+
+    --receiving_message_dark_bg:#353535;
+    --receiving_message_light_bg:#cdcbcb;
+
+    --server_meesage_dark_bg:#6b675dac;
+    --server_meesage_light_bg:#a8a397ac;
+}
+#home_page.light_mode{
+    background: var(--light_mode_bg);
+    color: var(--light_mode_text);
+}
+#home_page.dark_mode{
+    background: var(--dark_mode_bg);
+    color: var(--dark_mode_text);
+}
+
+#home_page .home_page_full_page{
+    /* background: red; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+#home_page .side_bar{
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height:var(--main_height_for_ui);
+    background: rgba(169, 159, 179, 0.659);
+    border-radius: 0px 20px 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    
+    overflow: hidden;
+    text-wrap: nowrap;
+
+    width: 250px;
+    transition: border-radius 0.5s ease-in-out, width 0.5s ease-in-out,padding 0.5s ease-in-out;
+    padding-right: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#home_page .side_bar.inactive{
+    width: 62px;
+    transition: border-radius 0.5s ease-in-out, width 0.5s ease-in-out,padding 0.5s ease-in-out;
+    padding-right: 14px;
+    border-radius: 0px 12px 12px 0px;
+}
+#home_page .side_bar.light_mode{
+    background: var(--light_mode_bg_2);
+}
+#home_page .side_bar.dark_mode{
+    background: var(--dark_mode_bg_2);
+    
+}
+
+#home_page .side_bar .bottom_part_con,#home_page .side_bar .top_part_con{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+#home_page .side_bar .line_div{
+    height: 1px; 
+    width: 100%;
+    background: rgb(120, 120, 120);
+    border: 2px;
+}
+
+
+#home_page .side_bar .app_icon_con{
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#home_page .side_bar .app_icon_con img{
+    height: 100%;
+}
+
+#home_page .side_bar .menu_item_con{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    padding:6px;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background: var(--main_color_shado);
+    }
+}
+#home_page .side_bar .menu_item_con.active{
+    background: var(--main_color);
+    background: rgba(128, 128, 128, 0.236);
+    position: relative;
+    transition: all 0.5s;
+}
+@keyframes tttttt {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+    
+}
+#home_page .side_bar .menu_item_con.active::after{
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 20%;
+    width: 5px;
+    height: 70%;
+    background: var(--color_for_ui);
+    border-radius: 10px;
+    animation: tttttt 0.6s ease-in-out;
+    transition: all 0.3s;
+}
+
+#home_page .side_bar .menu_item_con img{
+    height: 80%;
+}
+#home_page .side_bar .menu_item_con .menu_name ,#home_page .side_bar .app_icon_con .menu_name{
+    transition:opacity 0.4s ease-in-out ;
+    opacity: 1;
+}
+#home_page .side_bar .menu_item_con .menu_name.hidden ,#home_page .side_bar .app_icon_con .menu_name.hidden{
+    transition:opacity 0.4s ease-in-out ;
+    opacity: 0;
+}
+
+
+
+

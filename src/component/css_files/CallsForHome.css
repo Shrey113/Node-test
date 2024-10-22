@@ -1,0 +1,196 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+   --main_color: #855ba8;
+     /* --color_for_ui: #218e54;
+    --main_color_shado: #9b9b9b15;
+    --gray_text_color:rgb(121, 120, 120);
+
+    --dark_mode_bg:#202121;
+    --dark_mode_bg_2:#2c2c2c;
+    --dark_mode_text:white;
+    
+    --light_mode_bg:#fefefe;
+    --light_mode_bg_2:#f3f3f3;
+    --light_mode_text:rgb(0, 0, 0); */
+}
+
+#main_call_con{
+    height: 100vh;
+    width: 100vw;
+    padding-left: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+#main_call_con .user_list_con{
+    height: var(--main_height_for_ui);
+    width: 360px;
+    padding: 20px 10px;
+    background: var(--dark_mode_bg_2);
+    border-radius: 10px 0px 0px 10px;
+    overflow: hidden;
+}
+#main_call_con .user_list_con.light_mode{
+    background: var(--light_mode_bg_2);
+    color: var(--light_mode_text);
+    
+}
+#main_call_con .user_list_con.dark_mode{
+    background: var(--dark_mode_bg_2);
+    color: var(--dark_mode_text);
+}
+
+#main_call_con .active_chat{
+    height: var(--main_height_for_ui);
+    /* margin-right: 7px; */
+    background: var(--dark_mode_bg_2);
+    flex-grow: 0.98;
+    border-radius: 0px 10px 10px 0px;
+    overflow: hidden;
+    position: relative;
+}
+
+/*  */
+/*  */
+/*  */
+#main_call_con .user_list_con .title_menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+#main_call_con .user_list_con .title_menu .title_item{
+    height: 41px;
+    display: flex;
+    gap: 10px;
+}
+#main_call_con .user_list_con .title_menu .title_item img{
+    height: 100%;
+    cursor: pointer;
+    padding: 9px;
+    border-radius: 5px;
+    &:hover{
+        background: var(--main_color_shado);
+    }
+}
+
+#main_call_con .user_list_con .search_input{
+    background: var(--main_color_shado);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 10px;
+    padding-top: 6px;
+    gap: 5px;
+    border-radius: 7px;
+    border-bottom: 2px solid gray;
+}
+#main_call_con .user_list_con .search_input .icon{
+    height: 30px;
+    transform: scaleX(-1);
+}
+#main_call_con .user_list_con .search_input .icon img{
+    height: 100%;
+}
+#main_call_con .user_list_con .search_input input{
+    flex-grow: 1;
+    font-size: 1.1rem;
+    outline: 0;
+    border: 0;
+    background: transparent;
+}
+#main_call_con .user_list_con .search_input:focus-within {
+    border-bottom: 2px solid var(--color_for_ui);
+}
+
+
+/*  */
+/*  */
+/*  */
+
+#main_call_con .user_list_con .user_s_list{
+    margin-top: 20px;
+    /* background: rgba(255, 0, 0, 0.164); */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+#main_call_con .user_list_con .user_s_list .item_con{
+    border-radius: 8px;
+    /* background: rgba(78, 23, 197, 0.329); */
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+    &:hover{
+        background: var(--main_color_shado);
+    }
+}
+#main_call_con .user_list_con .user_s_list .item_con.active{
+    background: rgba(128, 128, 128, 0.236);
+}
+
+#main_call_con .user_list_con .user_s_list .item_con .profile_pic{
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+}
+#main_call_con .user_list_con .user_s_list .item_con .profile_pic img{
+    height: 100%;
+    width: 100%;
+}
+/* user_data */
+#main_call_con .user_list_con .user_s_list .user_data{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+    flex-grow: 1;
+}
+
+/* user_data   >  user_data_1*/
+#main_call_con .user_list_con .user_s_list .user_data .user_data_1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* user_data   >  user_data_2*/
+#main_call_con .user_list_con .user_s_list .user_data .user_data_2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main_call_con .user_list_con .user_s_list .user_data .user_data_2 .profile_state_icon{
+    height: 30px;
+    padding: 4px;
+}
+#main_call_con .user_list_con .user_s_list .user_data .user_data_2 .profile_state_icon:not(:has(.new_message_number)){
+    cursor: pointer;
+    &:hover{
+        background: var(--main_color_shado);
+    }
+}
+#main_call_con .user_list_con .user_s_list .user_data .user_data_2 .profile_state_icon .new_message_number{
+    background: var(--color_for_ui);
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+} 
+#main_call_con .user_list_con .user_s_list .user_data .user_data_2 .profile_state_icon img{
+    height: 100%;
+}
