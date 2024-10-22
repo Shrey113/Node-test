@@ -7,7 +7,7 @@ import ChatsForHome from './ChatsForHome';
 import CallsForHome from './CallsForHome';
 
 
-const socket = io("http://localhost:4000", {
+const socket = io("https://node-test-back-pps0yyp5l-shrey113s-projects.vercel.app", {
   withCredentials: true,
   transports: ['websocket', 'polling']
 });

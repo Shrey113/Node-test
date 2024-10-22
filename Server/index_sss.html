@@ -221,7 +221,7 @@
                     
                     // Copy link to clipboard on button click
                     copyButton.onclick = () => {
-                        const fullPath = `http://localhost:4000${route.path}`; // Construct full URL
+                        const fullPath = `https://node-test-back-pps0yyp5l-shrey113s-projects.vercel.app${route.path}`; // Construct full URL
                         navigator.clipboard.writeText(fullPath).then(() => {
                             alert('Link copied to clipboard!'); // Show success message
                         }).catch(err => {
