@@ -361,7 +361,7 @@ app.post("/get_user_data_from_jwt", (req, res) => {
           userData: userData // Include user data if available
       });
   } else {
-      res.status(401).send("JWT token is invalid");
+      res.status(200).send("JWT token is invalid");
   }
 });
 
