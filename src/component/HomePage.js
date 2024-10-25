@@ -7,7 +7,7 @@ import ChatsForHome from './ChatsForHome';
 import CallsForHome from './CallsForHome';
 
 
-const socket = io("https://node-test-back-pps0yyp5l-shrey113s-projects.vercel.app", {
+const socket = io("https://test-node-90rz.onrender.com", {
   withCredentials: true,
   transports: ['websocket', 'polling']
 });
