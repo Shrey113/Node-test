@@ -15,7 +15,7 @@ function App() {
 
     if (token) {
       try {
-        const response = await fetch('https://node-test-g5gn.vercel.app/get_user_data_from_jwt', {
+        const response = await fetch('https://test-node-90rz.onrender.com/get_user_data_from_jwt', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

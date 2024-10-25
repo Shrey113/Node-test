@@ -24,7 +24,7 @@ function ChatsForHome({set_dark_mode,user_data_email,user_name}) {
 
     const fetch_users_data = async () => {
         try {
-            const response = await fetch('https://node-test-g5gn.vercel.app/get_users');
+            const response = await fetch('https://test-node-90rz.onrender.com/get_users');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -66,7 +66,7 @@ function ChatsForHome({set_dark_mode,user_data_email,user_name}) {
 
     const fetch_chat_data_by_room_id = async () => {
         try {
-          const response = await fetch('https://node-test-g5gn.vercel.app/api/get_chat', {
+          const response = await fetch('https://test-node-90rz.onrender.com/api/get_chat', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ function ChatsForHome({set_dark_mode,user_data_email,user_name}) {
 
       const sendNewMessage = async (newMessage) => {
         try {
-            const response = await fetch('https://node-test-g5gn.vercel.app/api/send_message', { // Update the endpoint as needed
+            const response = await fetch('https://test-node-90rz.onrender.com/api/send_message', { // Update the endpoint as needed
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -152,7 +152,7 @@ function ChatsForHome({set_dark_mode,user_data_email,user_name}) {
 
               let fetch_chat_data_by_room_id_2 = async () => {
                 try {
-                  const response = await fetch('https://node-test-g5gn.vercel.app/api/get_chat', {
+                  const response = await fetch('https://test-node-90rz.onrender.com/api/get_chat', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
@@ -200,7 +200,7 @@ function ChatsForHome({set_dark_mode,user_data_email,user_name}) {
       set_reverser_messages([]);
         let fetchChatData_2 = async () => {
             try {
-              const response = await fetch('https://node-test-g5gn.vercel.app/api/get_chat', {
+              const response = await fetch('https://test-node-90rz.onrender.com/api/get_chat', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
