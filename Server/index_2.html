@@ -15,9 +15,8 @@
         }
         h1 {
             font-size: 3em;
-            color: #fb6977;
+            color: #dc3545;
             animation: fadeIn 2s;
-            background: rgba(102, 51, 153, 0.101);
         }
         p {
             font-size: 1.2em;
@@ -162,7 +161,7 @@
             const errorMessage = document.getElementById('error-message');
             
             // Send login request to the server
-            fetch('https://test-node-90rz.onrender.com/validate-admin', {
+            fetch('http://localhost:4000/validate-admin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -185,7 +184,7 @@
         }
 
         function fetchRoutes() {
-            fetch('https://test-node-90rz.onrender.com/get_routes')
+            fetch('http://localhost:4000/get_routes')
             .then(response => response.json())
             .then(data => {
                 const routesTableBody = document.querySelector('tbody');
@@ -221,7 +220,7 @@
                     
                     // Copy link to clipboard on button click
                     copyButton.onclick = () => {
-                        const fullPath = `https://node-test-back-pps0yyp5l-shrey113s-projects.vercel.app${route.path}`; // Construct full URL
+                        const fullPath = `http://localhost:4000${route.path}`; // Construct full URL
                         navigator.clipboard.writeText(fullPath).then(() => {
                             alert('Link copied to clipboard!'); // Show success message
                         }).catch(err => {

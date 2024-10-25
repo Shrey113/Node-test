@@ -15,6 +15,13 @@ function HomePageSubMenu({file_close_funtion,dark_mode_stat,set_me_on_open_menu,
     const chat_icon = require(`../Data/Home_page_data/${dark_mode_stat}/chat.png`);
     const notification_icon = require(`../Data/Home_page_data/${dark_mode_stat}/notification.png`);
     const Help_icon = require(`../Data/Home_page_data/${dark_mode_stat}/info.png`);
+    const profile_icon = require(`../Data/Home_page_data/${dark_mode_stat}/user.png`);
+    const pen_icon = require(`../Data/Home_page_data/${dark_mode_stat}/pen.png`);
+
+    
+    const[user_name,set_user_name] = useState(user_data_user_name)
+    const[user_About,set_user_About] = useState('make it simple but significant')
+    const[user_email,set_user_email] = useState(user_data_email)
 
 
   return (
@@ -68,15 +75,53 @@ function HomePageSubMenu({file_close_funtion,dark_mode_stat,set_me_on_open_menu,
             <div className={`sub_info ${dark_mode_stat === 'Light' ? 'light_mode' : 'dark_mode'}`}>
                 <div className="info_title">{active_page}</div>
                 <div className="info_data">
+                    <div className="profile_con">
+                        <img src={profile_icon} alt="" />
+                    </div>
+                    <div className="item_pen_con">
+                        <div className="data">
+                            <input type="text" value={user_name} onChange={(e)=>{set_user_name(e.target.value)}}  
+                                className={`active ${dark_mode_stat === 'Light' ? 'set_Light_input' : 'set_dark_input'}`} 
+                            />
+                        </div>
+                        <img src={pen_icon} alt="" />
+                    </div>
+
+
+                    <div className="item_pen_con">
+                        <div className="data">
+                            <div className="title">About</div>
+                            
+                            <textarea 
+                            className={`${dark_mode_stat === 'Light' ? 'set_Light_input' : 'set_dark_input'}
+                            active
+                            `} 
+                            style={{height: `${Math.max(40, user_About.split('\n').length * 24)}px`,}}
+                             value={user_About} onChange={(e)=>{set_user_About(e.target.value);}}/>
+                        </div>
+                        <img src={pen_icon} alt="" />
+                    </div>
+
+                    <div className="item_pen_con">
+                        <div className="data">
+                            <div className="title">Email ID</div>
+                            <input type="text" value={user_email} onChange={(e)=>{set_user_email(e.target.value)}} 
+                                className={` active ${dark_mode_stat === 'Light' ? 'set_Light_input' : 'set_dark_input'}`} 
+                            />
+                        </div>
+                        <img src={pen_icon} alt="" />
+                    </div>
+
+
+
+                    <div className="line_div"></div>
+                    <br />
                     This  features are not avilable for now!<br/>Next version have a this  features
                     <br />
                     <br />
                     <br />
                     <h2>Test data :</h2>
-                    <br />
-
-                    <p>Email: {user_data_email}</p>
-                    <p>Username: {user_data_user_name}</p>
+                    <br />        
                     <p>Password: {user_data_password}</p>
 
                     <br />

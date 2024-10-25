@@ -13,7 +13,8 @@ const modules_need_for_this_file = [
     'chart.js',
     'socket.io',
     'socket.io-client',
-
+    'morgan',
+    'emoji-picker-react',
     // must for fix react app
     '--save-dev @babel/plugin-proposal-private-property-in-object',
 ];
@@ -144,11 +145,28 @@ if (task_1){
 if (task_2){
     console.log(" 2. fix -- (BUG that will show on start React-app)....\n\n");
 }
+const path = require('path');
 
-rl.question('Any key to run React App.....', () => {
+
+const server_file_path = path.join(__dirname,'Server','server.js')
+var react_url = 'http://localhost:3000';
+rl.question('Any key to build React App and start.....', () => {
     execSync(`cls`, { stdio: 'inherit' });
-    console.log("@shrey11_ say 'npm start'\n");
-    execSync(`npm start`, { stdio: 'inherit' });
+    console.log("@shrey11_ say 'npm run build'\n");
+    
+    console.log("\n1 - build a new folder \n");
+    
+    execSync("npm run build", { stdio: 'inherit' })
+    execSync(`cls`, { stdio: 'inherit' });
+    
+    console.log("\n2 -  start server\n");
+
+    execSync(`start ${react_url}`, { stdio: 'inherit' });
+
+    execSync(`start cmd /k node ${server_file_path}`, { stdio: 'inherit' });
+
+    execSync("serve -s build", { stdio: 'inherit' })
+    
     rl.close();
 });
 

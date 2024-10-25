@@ -90,7 +90,7 @@ function LoginRegister() {
       return;
     }
 
-    fetch('https://test-node-90rz.onrender.com/login_user', {
+    fetch('http://localhost:4000/login_user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ function LoginRegister() {
     } else {
       set_signup_email_error('');
 
-      fetch('https://test-node-90rz.onrender.com/send_otp_email', {
+      fetch('http://localhost:4000/send_otp_email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -184,7 +184,7 @@ function LoginRegister() {
       return;
     }
 
-    fetch('https://test-node-90rz.onrender.com/verify_otp', {
+    fetch('http://localhost:4000/verify_otp', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -257,7 +257,7 @@ function LoginRegister() {
     }
     if (valid) {
       set_signup_email_error("")
-          fetch('https://test-node-90rz.onrender.com/add_user', {
+          fetch('http://localhost:4000/add_user', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -265,11 +265,14 @@ function LoginRegister() {
             body: JSON.stringify(
               { email: signup_email ,
                 username:signup_user_name , 
-                password:signup_password 
+                password:signup_password ,
+                is_public:false
               })
           })
           .then(response => {
             if (!response.ok) {
+              console.log(response);
+              
               set_signup_email_error("Not Valide Email");
               throw new Error('Network response was not ok');
             }

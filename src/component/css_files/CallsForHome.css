@@ -16,7 +16,7 @@
     --light_mode_bg:#fefefe;
     --light_mode_bg_2:#f3f3f3;
     --light_mode_text:rgb(0, 0, 0); */
-}
+} 
 
 #main_call_con{
     height: 100vh;
@@ -28,6 +28,10 @@
     gap: 3px;
 }
 #main_call_con .user_list_con{
+
+
+    margin-left: 5px;
+
     height: var(--main_height_for_ui);
     width: 360px;
     padding: 20px 10px;

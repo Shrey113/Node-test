@@ -151,5 +151,88 @@
    font-weight: 500;
    margin-bottom: 15px;
 }
+#HomePageSubMenu .user_sub_menu .info_section .info_data{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con{
+    display: flex;
+    /* background: red; */
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con img{
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 8px;
+    &:hover{
+        background: var(--main_color_shado);
+    }
+}
+
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con .data .title{
+    margin-bottom: 3px;
+    font-size: 0.9rem;
+}
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con .data input{
+    padding: 4px;
+    padding-left: 6px;
+    width: 250px;
+    outline: 0;
+    border: 0;
+    background:transparent;
+}
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con .data textarea{
+    font-family:sans-serif;
+    font-size: 1rem;
+    resize: none; 
+    overflow: hidden;
+    width: 250px;
+    box-sizing: border-box;
+    padding: 4px;
+    padding-left: 6px;
+    outline: 0;
+    border: 0;
+    background: transparent;
+}
+/* textarea */
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con .data textarea.set_dark_input{
+    color: var(--dark_mode_text);
+}
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con .data textarea.set_Light_input{
+    color: var(--light_mode_text);
+}
+/* input */
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con .data input.set_dark_input{
+    color: var(--dark_mode_text);
+}
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con .data input.set_Light_input{
+    color: var(--light_mode_text);
+}
+
+/* textarea active - no  */
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con .data textarea.active{
+    background: var(--main_color_shado);
+    border-radius: 5px;
+    border-bottom: 2px solid var(--color_for_ui);
+}
+/* input active - no  */
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con .data input.active{
+    background: var(--main_color_shado);
+    border-radius: 5px;
+    border-bottom: 2px solid var(--color_for_ui);
+}
 
 
+
+.line_div{
+    height: 1px; 
+    width: 100%;
+    background: rgb(120, 120, 120);
+    border: 2px;
+}

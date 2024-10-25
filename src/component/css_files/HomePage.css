@@ -12,18 +12,21 @@
 
     /* coloer set */
     --main_color: #855ba8;
-    --color_for_ui: #218e54;
-    --main_color_shado: #9b9b9b15;
+
+
+
+    --color_for_ui: #0e8144;
+    --main_color_shado: #9b9b9b1e;
     --gray_text_color:rgb(121, 120, 120);
     --gray_color:#373736;
     
 
-    --dark_mode_bg:#202121;
-    --dark_mode_bg_2:#2c2c2c;
+    --dark_mode_bg:#212020;
+    --dark_mode_bg_2:#313131;
     --dark_mode_text:white;
     
-    --light_mode_bg:#e3e0e0;
-    --light_mode_bg_2:#f3f3f3;
+    --light_mode_bg:#ebeef1;
+    --light_mode_bg_2:#fffefe;
     --light_mode_text:rgb(0, 0, 0);
 
 
