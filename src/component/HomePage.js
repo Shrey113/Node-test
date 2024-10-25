@@ -9,7 +9,7 @@ import HomePageSubMenu  from './sub_component/HomePageSubMenu'
 import CallsForHome from './CallsForHome';
 
 
-const socket = io("http://localhost:4000");
+const socket = io("https://test-node-90rz.onrender.com");
 socket.on("connect", () => {
   console.log("Connected to the server!");
 });
@@ -76,7 +76,7 @@ function HomePage() {
   useEffect(() => {
     const token = window.localStorage.getItem(localstorage_key_for_jwt_user_side_key);
     if (token) {
-      fetch('http://localhost:4000/get_user_data_from_jwt', {
+      fetch('https://test-node-90rz.onrender.com/get_user_data_from_jwt', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ const get_user_data_by_email = (email) => {
 
  const fetch_users_data = async () => {
      try {
-         const response = await fetch('http://localhost:4000/get_users');
+         const response = await fetch('https://test-node-90rz.onrender.com/get_users');
          if (!response.ok) {
              throw new Error('Network response was not ok');
          }
@@ -312,7 +312,7 @@ const get_user_data_by_email = (email) => {
 
 
 async function  fetch_chat_data_by_room_id (room_id,receiver_email,sender_email){
- fetch('http://localhost:4000/api/get_chat', {
+ fetch('https://test-node-90rz.onrender.com/api/get_chat', {
      method: 'POST',
      headers: {
        'Content-Type': 'application/json',

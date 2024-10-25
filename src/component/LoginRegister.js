@@ -90,7 +90,7 @@ function LoginRegister() {
       return;
     }
 
-    fetch('http://localhost:4000/login_user', {
+    fetch('https://test-node-90rz.onrender.com/login_user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ function LoginRegister() {
     } else {
       set_signup_email_error('');
 
-      fetch('http://localhost:4000/send_otp_email', {
+      fetch('https://test-node-90rz.onrender.com/send_otp_email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -184,7 +184,7 @@ function LoginRegister() {
       return;
     }
 
-    fetch('http://localhost:4000/verify_otp', {
+    fetch('https://test-node-90rz.onrender.com/verify_otp', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -257,7 +257,7 @@ function LoginRegister() {
     }
     if (valid) {
       set_signup_email_error("")
-          fetch('http://localhost:4000/add_user', {
+          fetch('https://test-node-90rz.onrender.com/add_user', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

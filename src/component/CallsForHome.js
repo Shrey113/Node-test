@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './css_files/CallsForHome.css';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:4000');
+const socket = io('https://test-node-90rz.onrender.com');
 
 function CallsForHome({ set_dark_mode,user_data_email }) {
   const search_icon = require(`./Data/Home_page_data/${set_dark_mode}/search.png`);
@@ -14,7 +14,7 @@ function CallsForHome({ set_dark_mode,user_data_email }) {
 
   const fetch_users_data = async () => {
     try {
-        const response = await fetch('http://localhost:4000/get_users');
+        const response = await fetch('https://test-node-90rz.onrender.com/get_users');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
