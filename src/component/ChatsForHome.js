@@ -1,7 +1,7 @@
 import {React,useState,useEffect,useRef} from 'react'
 import './css_files/ChatsForHome.css'
 import io from 'socket.io-client';
-const socket = io('https://node-test-back-pps0yyp5l-shrey113s-projects.vercel.app');
+const socket = io('https://test-node-90rz.onrender.com/');
 
 function ChatsForHome({set_dark_mode,user_data_email,user_name}) {
 
