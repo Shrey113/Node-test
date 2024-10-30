@@ -16,7 +16,7 @@ function App() {
 
       if (token) {
         try {
-          const response = await fetch('http://localhost:4000/get_user_data_from_jwt', {
+          const response = await fetch('https://test-node-90rz.onrender.com/get_user_data_from_jwt', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

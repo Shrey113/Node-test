@@ -38,7 +38,7 @@ function ChatUserProfile({file_close_funtion,set_dark_mode,active_user_email,
 
 
     function block_user_by_email(email, block_email) {        
-        fetch("http://localhost:4000/block_user_by_email", {
+        fetch("https://test-node-90rz.onrender.com/block_user_by_email", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

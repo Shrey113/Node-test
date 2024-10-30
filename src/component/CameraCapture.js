@@ -74,7 +74,7 @@ const CameraCapture = ({ is_dark_mode, file_clsoe_fun, sending_email, current_ac
   
     const handleSubmit = async (chatImgBase64) => {
       try {
-        const response = await fetch('http://localhost:4000/api/add_chat', {
+        const response = await fetch('https://test-node-90rz.onrender.com/api/add_chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

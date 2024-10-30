@@ -75,7 +75,7 @@ const ProfileInfo = ()=>{
    
     async function remove_profile_image(email) {
         try {
-          const response = await fetch('http://localhost:4000/remove_profile_img', {
+          const response = await fetch('https://test-node-90rz.onrender.com/remove_profile_img', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ const ProfileInfo = ()=>{
   
         async function updateUser(data,update_key) {
             try {
-              const response = await fetch('http://localhost:4000/update-user', {
+              const response = await fetch('https://test-node-90rz.onrender.com/update-user', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
@@ -177,7 +177,7 @@ const ProfileInfo = ()=>{
             try {
                 const base64Image = await convertToBase64(file);
                 
-                const response = await fetch('http://localhost:4000/uploads', {
+                const response = await fetch('https://test-node-90rz.onrender.com/uploads', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -335,7 +335,7 @@ const GeneralInfo = ()=>{
     },[])
 
     function un_block(email){
-        fetch('http://localhost:4000/unblock_user_by_email', {
+        fetch('https://test-node-90rz.onrender.com/unblock_user_by_email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

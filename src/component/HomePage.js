@@ -16,7 +16,7 @@ import CameraCapture from './CameraCapture';
 import { client_data} from './Clint_data';
 
 
-const socket = io("http://localhost:4000");
+const socket = io("https://test-node-90rz.onrender.com");
 socket.on("connect", () => {
   console.log("Connected to the server!");
 });
@@ -140,7 +140,7 @@ function HomePage() {
 
   const fetch_users_data = async (email) => {
     try {
-        const response = await fetch(`http://localhost:4000/get_users?email=${email}`);
+        const response = await fetch(`https://test-node-90rz.onrender.com/get_users?email=${email}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -472,7 +472,7 @@ const getBase64FromArrayBuffer = (data) => {
 
 async function fetch_chat_data_by_room_id(page,room_id, receiver_email, sender_email) {
   try {
-    const response = await fetch('http://localhost:4000/api/get_chat', {
+    const response = await fetch('https://test-node-90rz.onrender.com/api/get_chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -533,7 +533,7 @@ const fetch_Next_Page = async () => {
   set_message_sub_loading(true)
   set_page_for_message(prevPage => prevPage + 1);
     try {
-      const response = await fetch('http://localhost:4000/api/get_chat', {
+      const response = await fetch('https://test-node-90rz.onrender.com/api/get_chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -844,7 +844,7 @@ const fetch_Next_Page = async () => {
          }
        }
        try {
-         const response = await fetch('http://localhost:4000/api/add_chat', {
+         const response = await fetch('https://test-node-90rz.onrender.com/api/add_chat', {
            method: 'POST',
            headers: {
              'Content-Type': 'application/json',
