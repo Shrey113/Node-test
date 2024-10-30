@@ -10,6 +10,8 @@ import refresh from './Data/refresh.png';
 import ShowLoder from './sub_component/show_loder'
 import ForgotPassword from './sub_component/ForgotPassword'
 
+
+
 function LoginRegister() {
   // IMP Data
   const localstorage_key_for_jwt_user_side_key = 'Jwt_user_localstorage_key_on_chat_x'
@@ -90,7 +92,7 @@ function LoginRegister() {
       return;
     }
 
-    fetch('https://test-node-90rz.onrender.com/login_user', {
+    fetch('http://localhost:4000/login_user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -123,7 +125,7 @@ function LoginRegister() {
         
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -143,7 +145,7 @@ function LoginRegister() {
     } else {
       set_signup_email_error('');
 
-      fetch('https://test-node-90rz.onrender.com/send_otp_email', {
+      fetch('http://localhost:4000/send_otp_email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -184,7 +186,7 @@ function LoginRegister() {
       return;
     }
 
-    fetch('https://test-node-90rz.onrender.com/verify_otp', {
+    fetch('http://localhost:4000/verify_otp', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -199,7 +201,6 @@ function LoginRegister() {
       return response.json();
     })
     .then(data => {
-      console.log('Success:', data.message);
       if(data.message === "OTP verified successfully"){
         set_OTP_verify(true)
       }else{
@@ -257,7 +258,7 @@ function LoginRegister() {
     }
     if (valid) {
       set_signup_email_error("")
-          fetch('https://test-node-90rz.onrender.com/add_user', {
+          fetch('http://localhost:4000/add_user', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -271,7 +272,7 @@ function LoginRegister() {
           })
           .then(response => {
             if (!response.ok) {
-              console.log(response);
+              console.error(response);
               
               set_signup_email_error("Not Valide Email");
               throw new Error('Network response was not ok');
@@ -285,8 +286,6 @@ function LoginRegister() {
               set_signup_email_error("");
             }
             if(data.message === "User registered successfully"){
-              console.log(data);
-
               if(data.token){
                 window.localStorage.setItem(localstorage_key_for_jwt_user_side_key,data.token)
                 window.location.reload()

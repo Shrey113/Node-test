@@ -1,41 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React  from 'react';
 import './css_files/CallsForHome.css';
-import io from 'socket.io-client';
 
-const socket = io('https://test-node-90rz.onrender.com');
 
-function CallsForHome({ set_dark_mode,user_data_email }) {
+function CallsForHome({ set_dark_mode,user_data_email,
+
+  list_of_users,set_list_of_users
+
+ }) {
   const search_icon = require(`./Data/Home_page_data/${set_dark_mode}/search.png`);
   const profile_icon = require(`./Data/Home_page_data/${set_dark_mode}/user.png`);
   const telephone = require(`./Data/Home_page_data/${set_dark_mode}/telephone.png`);
 
 
-  const [list_of_users, set_list_of_users] = useState([]);
 
-  const fetch_users_data = async () => {
-    try {
-        const response = await fetch('https://test-node-90rz.onrender.com/get_users');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        set_list_of_users(data);
-    } catch (error) {
-        console.error('Error fetching users:', error);
-    }
-};
-useEffect(() => {
-    fetch_users_data();
-}, []); 
+
+
 
   const UserListItem = ({is_chat_on,receiver_email,sender_email,reverser_user_name,
-    user_profile,is_pin_top,new_message
+    user_set_profile,is_pin_top,new_message
 })=>{
+
+  const imageSrc = user_set_profile ? user_set_profile : profile_icon;
     return(
       
         <div className={`item_con ${is_chat_on && 'active'}`} >
             <div className="profile_pic">
-                <img src={user_profile} alt="" />
+                <img src={imageSrc} alt="" />
             </div>
             <div className="user_data">
                 <div className="user_data_1">
@@ -58,6 +48,9 @@ useEffect(() => {
     )
 }
 
+
+
+
   return (
     <div id="main_call_con">
       <div className={`user_list_con ${set_dark_mode === 'Light' ? 'light_mode' : 'dark_mode'}`}>
@@ -78,9 +71,10 @@ useEffect(() => {
         <div className="user_s_list">
         {list_of_users.map((user, index) => (
               user_data_email !== user.email && (
-              <UserListItem key={index} is_chat_on={true}
+              <UserListItem key={index} is_chat_on={index - 1  ? true : false}
                 receiver_email={user.email} sender_email={user_data_email} reverser_user_name={user.username}
                 user_profile={profile_icon} is_pin_top={false} new_message={0} 
+                user_set_profile={user.profile_image}
                 />
               )
               ))}
@@ -88,7 +82,10 @@ useEffect(() => {
       </div>
 
       <div className="active_chat">
-        5
+        
+
+
+        
         </div>
 
     </div>

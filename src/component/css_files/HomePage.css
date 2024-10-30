@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 #home_page{
     display: flex;
     justify-content: center;
@@ -5,6 +7,7 @@
     flex-direction: column;
     background: rgba(255, 0, 0, 0.252);
     height: 100vh;
+    font-family: "Roboto", sans-serif;
 } 
 :root {
 /*  */
@@ -21,25 +24,31 @@
     --gray_color:#373736;
     
 
-    --dark_mode_bg:#212020;
-    --dark_mode_bg_2:#313131;
+    --dark_mode_bg:#202121;
+    --dark_mode_bg_2:#2c2c2c;
     --dark_mode_text:white;
     
     --light_mode_bg:#ebeef1;
+    --light_mode_bg:#e4e2e2;
     --light_mode_bg_2:#fffefe;
+    --light_mode_bg_2:#feffff;
     --light_mode_text:rgb(0, 0, 0);
 
 
     /*  */
     --send_message_dark_bg:#015c4a;
-    --send_message_light_bg:#07a183;
+    --send_message_light_bg:#d9fdd3;
 
-    --receiving_message_dark_bg:#353535;
-    --receiving_message_light_bg:#cdcbcb;
+    --receiving_message_dark_bg:#373637;
+    --receiving_message_light_bg:#eeeeee;
 
     --server_meesage_dark_bg:#6b675dac;
-    --server_meesage_light_bg:#a8a397ac;
+    --server_meesage_light_bg:#fdefd5;
 }
+
+
+
+
 #home_page.light_mode{
     background: var(--light_mode_bg);
     color: var(--light_mode_text);
@@ -137,7 +146,7 @@
     cursor: pointer;
     border-radius: 4px;
     padding:6px;
-    width: 100%;
+    width: 100%;;
     transition: all 0.2s ease-in-out;
     &:hover{
         background: var(--main_color_shado);
@@ -174,6 +183,53 @@
 #home_page .side_bar .menu_item_con img{
     height: 80%;
 }
+
+#home_page .side_bar .menu_item_con_2 {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    &:hover{
+        background: var(--main_color_shado);
+    }
+}
+#home_page .side_bar .menu_item_con_2 .profile_img{
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    object-fit: fill;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: all 0.5s ease;
+}
+#home_page .side_bar .menu_item_con_2 .profile_img:hover{
+    outline: 2px solid rgb(255, 215, 40);
+}
+
+#home_page .side_bar .menu_item_con_2 .profile_img img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    /* object-fit: fill; */
+}
+#home_page .side_bar .menu_item_con_2 .menu_name{
+    transition:opacity 0.4s ease-in-out ;
+    opacity: 1;
+    display: flex;
+}
+#home_page .side_bar .menu_item_con_2 .menu_name.hidden{
+    transition:opacity 0.4s ease-in-out ;
+    opacity: 0;
+    display: none;
+}
+
+
 #home_page .side_bar .menu_item_con .menu_name ,#home_page .side_bar .app_icon_con .menu_name{
     transition:opacity 0.4s ease-in-out ;
     opacity: 1;

@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#show_question_pop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.299);
+    backdrop-filter: blur(10px);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+#show_question_pop .pop_menu{
+    border-radius: 10px;
+    overflow: hidden;
+}
+#show_question_pop .pop_menu .top_bar{
+    padding: 25px;
+    background: var(--dark_mode_bg_2);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#show_question_pop .pop_menu .top_bar.light_mode{
+    background: var(--light_mode_bg_2);
+    color: var(--light_mode_text);
+}
+#show_question_pop .pop_menu .top_bar.dark_mode{
+    background: var(--dark_mode_bg_2);
+    color: var(--dark_mode_text);
+}
+#show_question_pop .pop_menu .top_bar .title{
+    font-size: 1.4rem;
+}
+#show_question_pop .pop_menu .top_bar .message{
+    font-size: 1rem;
+}
+
+
+#show_question_pop .pop_menu .bottom_bar{
+    padding: 15px;
+    background: var(--dark_mode_bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    padding: 15px 25px;
+}
+#show_question_pop .pop_menu .bottom_bar.light_mode{
+    background:var(--light_mode_bg);
+    color: var(--light_mode_text);
+}
+#show_question_pop .pop_menu .bottom_bar.dark_mode{
+    background: var(--dark_mode_bg);
+    color: var(--dark_mode_text);
+}
+#show_question_pop .pop_menu .bottom_bar .yes_button{
+    width: 160px;
+    padding: 7px 0px;
+    background: var(--color_for_ui);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+    &:hover{
+        background: #0d723c;
+    }
+}
+#show_question_pop .pop_menu .bottom_bar .no_button{
+    background: rgba(99, 99, 99, 0.344);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    padding: 7px 0px;
+    color: rgb(255, 255, 255);
+    &:hover{
+        background: rgba(99, 99, 99, 0.527);
+    }
+}
+

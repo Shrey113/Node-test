@@ -1,0 +1,286 @@
+ 
+/* work  */
+/* css start */
+
+#ChatUserProfile{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 999;
+}
+@keyframes on_show_animation {
+    0%{bottom: -500px;}
+    100%{bottom: 2px;}
+}
+
+#ChatUserProfile .user_sub_menu{
+    position: absolute;
+    top: 10px;
+    left: 60%;
+    transform: translateX(-60%);
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+    height: 550px;
+    background: var(--dark_mode_bg);
+    border-radius: 10px;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    animation:  on_show_animation 0.3s ease-in;
+    
+}
+#ChatUserProfile .user_sub_menu.light_mode{
+    background: var(--light_mode_bg);
+    color: var(--light_mode_text);
+}
+#ChatUserProfile .user_sub_menu.dark_mode{
+    background: var(--dark_mode_bg);
+    color: var(--dark_mode_text);
+}
+
+
+
+#ChatUserProfile .user_sub_menu .side_menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    min-width: 150px;
+    padding-left: 5px;
+    height: 100%;
+}
+#ChatUserProfile .user_sub_menu .top_sub_menu_part,#ChatUserProfile .user_sub_menu .bottom_sub_menu_part{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    width: fit-content;
+}
+
+
+
+#ChatUserProfile .user_sub_menu .menu_item_con{
+    height: 40px;
+    width: 180px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    padding:6px;
+    font-weight: 400;
+    
+
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background: rgba(128, 128, 128, 0.067);
+    }
+}
+#ChatUserProfile .user_sub_menu .menu_item_con.active{
+    background: var(--color_for_ui);
+    background: rgba(128, 128, 128, 0.236);
+    position: relative;
+    transition: all 0.5s;
+}
+@keyframes tttttt {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+    
+}
+#ChatUserProfile .user_sub_menu .menu_item_con.active::after{
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 30%;
+    width: 3px;
+    height: 50%;
+    background: var(--color_for_ui);
+    border-radius: 10px;
+    animation: tttttt 0.6s ease-in-out;
+    transition: all 0.5s;
+}
+
+#ChatUserProfile .user_sub_menu .menu_item_con img{
+    height: 80%;
+}
+
+
+#ChatUserProfile .user_sub_menu .info_section{
+    height: 100%;
+    width: 350px;
+    bottom: 0;
+    
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 2px;
+}
+#ChatUserProfile .user_sub_menu .info_section .sub_info{
+    border-radius: 10px;
+    padding: 10px;
+    height: 800px;
+    height: 100%;
+    min-height: fit-content;
+    background: var(--dark_mode_bg_2);
+}
+
+#ChatUserProfile .user_sub_menu .info_section .sub_info.light_mode{
+    background: var(--light_mode_bg_2);
+    color: var(--light_mode_text);
+}
+#ChatUserProfile .user_sub_menu .info_section .sub_info.dark_mode{
+    background: var(--dark_mode_bg_2);
+    color: var(--dark_mode_text);
+}
+
+#ChatUserProfile .user_sub_menu .info_section::-webkit-scrollbar{
+    width: 3px;
+}
+#ChatUserProfile .user_sub_menu .info_section::-webkit-scrollbar-thumb{
+    background: rgb(192, 192, 192);
+    border-radius: 10px;
+}
+
+
+#ChatUserProfile .user_sub_menu .info_section .info_title{
+   font-size: 1.4rem;
+   margin-bottom: 15px;
+}
+
+#ChatUserProfile .user_sub_menu .info_section .info_data{
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+#ChatUserProfile .user_sub_menu .info_section .info_data .profile_con{
+    position: relative;
+    height: 120px;
+    width: 120px;
+    left: 50%;
+    transform: translate(-50%);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+#ChatUserProfile .user_sub_menu .info_section .info_data .profile_con .profile{
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#ChatUserProfile .user_sub_menu .info_section .info_data .call_option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+}
+#ChatUserProfile .user_sub_menu .info_section .info_data .call_option .op{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    background: rgba(128, 128, 128, 0.27);
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    &:hover{
+        background: rgba(206, 206, 206, 0.27);
+    }
+}
+
+#ChatUserProfile .user_sub_menu .info_section .info_data .call_option .op img{
+    height: 28px;
+    width: 28px;
+}
+
+
+#ChatUserProfile .user_sub_menu .info_section .info_data .user_name{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+#ChatUserProfile .user_sub_menu .info_section .info_data .user_name .user_name_2{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+#ChatUserProfile .user_sub_menu .info_section .info_data .item_menu{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+}
+#ChatUserProfile .user_sub_menu .info_section .info_data .item_menu .title{
+    font-size: 1.15rem;
+
+}
+#ChatUserProfile .user_sub_menu .info_section .info_data .item_menu .data{
+    font-size: 1.08rem;
+
+}
+#ChatUserProfile .user_sub_menu .info_section .info_data .button_con{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+#ChatUserProfile .user_sub_menu .info_section .info_data .button_con button {
+    width: 40%;
+    padding: 7px 12px;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    background: rgba(128, 128, 128, 0.5); 
+    cursor: pointer;
+    color: #fff; 
+    font-size: 0.9rem;
+    transition: background 0.3s ease; 
+}
+
+#ChatUserProfile .user_sub_menu .info_section .info_data .button_con button:hover {
+    background: rgba(206, 206, 206, 0.551); 
+    color: #000; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#ChatUserProfile .user_sub_menu .info_section .info_data .Encryption_info_1{
+    font-size: 1.05rem;
+}
+
+#ChatUserProfile .user_sub_menu .info_section .info_data .Encryption_info_1 a{
+    text-decoration: none;
+    font-weight: 500;
+    color: green;
+    cursor: pointer;
+    text-decoration: underline;
+}

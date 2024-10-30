@@ -1,0 +1,225 @@
+#ChatPinMenu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 88888;
+}
+#ChatPinMenu .main_div{
+    position: absolute;
+    left: 440px;
+    bottom: 60px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 5px;
+    z-index: -1;
+}
+#ChatPinMenu .main_div.light_mode{
+    background: var(--light_mode_bg);
+    color: var(--light_mode_text);
+}
+#ChatPinMenu .main_div.dark_mode{
+    background: var(--dark_mode_bg);
+    color: var(--dark_mode_text);
+}
+
+#ChatPinMenu button,#ChatPinMenu label:nth-child(1){
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    &:hover{
+        background: var(--main_color_shado);
+    }
+}
+
+#ChatPinMenu button img,#ChatPinMenu label img{
+    height: 24px;
+    width: 24px;
+}
+
+#ChatPinMenu button .text,#ChatPinMenu label .text{
+    font-size: 1rem;
+}
+#ChatPinMenu button .text,#ChatPinMenu label .text.light_mode{
+    color: var(--light_mode_text);
+}
+#ChatPinMenu button .text,#ChatPinMenu label .text.dark_mode{
+    color: var(--dark_mode_text);
+}
+
+
+
+
+
+#ChatPinMenu .show_selected_img{
+    position: absolute;
+    left: 440px;
+    bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+#ChatPinMenu .show_selected_img.light_mode{
+    background: var(--light_mode_bg);
+    color: var(--light_mode_text);
+}
+#ChatPinMenu .show_selected_img.dark_mode{
+    background: var(--dark_mode_bg);
+    color: var(--dark_mode_text);
+}
+
+#ChatPinMenu .show_selected_img .top_menu_bar{
+    /* background: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+#ChatPinMenu .show_selected_img .top_menu_bar img{
+    height: 40px;
+    width: 40px;
+    /* background: red; */
+}
+#ChatPinMenu .show_selected_img .main_img_pr{
+    height: 320px;
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#ChatPinMenu .show_selected_img .main_img_pr .main_prv{
+    height: 250px;
+    width: 100%;
+    padding: 10px;
+    background: rgba(47, 47, 47, 0.316);
+}
+#ChatPinMenu .show_selected_img .main_img_pr .main_prv img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+#ChatPinMenu .show_selected_img .main_img_pr .main_prv .remove_button{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background: rgba(255, 0, 0, 0.166);
+    cursor: pointer;
+    &:hover{
+        background: rgba(255, 0, 0, 0.592);
+    }
+}
+
+#ChatPinMenu .show_selected_img .main_img_pr .bottom_prv{
+    height: 70px;
+    width: 100%;
+    /* background: violet; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 10px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+
+}
+#ChatPinMenu .show_selected_img .main_img_pr .bottom_prv img{
+    height: 55px ;
+    width: 55px;
+    object-fit: contain;
+    background: rgba(128, 128, 128, 0.121);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+    &:hover{
+        background: rgba(220, 220, 220, 0.121);
+    }
+    
+}
+#ChatPinMenu .show_selected_img .main_img_pr .bottom_prv img.active{
+    background: rgba(175, 174, 174, 0.529);
+}
+#ChatPinMenu .show_selected_img .main_img_pr .bottom_prv .add_more_con{
+
+    position: absolute;
+    right: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(49, 49, 49);
+    backdrop-filter: blur(8px);
+}
+#ChatPinMenu .show_selected_img .main_img_pr .bottom_prv .add_more_con img{
+    background: transparent;
+    height: 40px;
+    width: 40px;
+}
+
+
+
+#ChatPinMenu .show_selected_img .bottom_menu_con input{
+    margin: 10px 0px;
+    height: 35px;
+    width: 100%;
+    padding: 5px;
+    font-size: 1rem;
+    outline: 0;
+    border: 0;
+    background: rgba(128, 128, 128, 0.153);
+    border-radius: 7px;
+    padding-left: 8px;
+}
+
+
+
+#ChatPinMenu .show_selected_img input.light_mode{
+    color: var(--light_mode_text);
+}
+#ChatPinMenu .show_selected_img input.dark_mode{
+    color: var(--dark_mode_text);
+}
+
+
+#ChatPinMenu .show_selected_img .bottom_menu_con .last_op{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+#ChatPinMenu .show_selected_img .bottom_menu_con .last_op img{
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    background: rgba(128, 128, 128, 0.121);
+    padding: 7px;
+    border-radius: 4px;
+    &:hover{
+        background: rgba(220, 220, 220, 0.121);
+    }
+}
+
+#ChatPinMenu .show_selected_img .bottom_menu_con .last_op img:nth-child(2){
+    background: var(--color_for_ui);
+}
+
+

@@ -1,0 +1,120 @@
+#FullImgView{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    user-select: none;
+    overflow: hidden;
+}
+#FullImgView.light_mode{
+    background: var(--light_mode_bg);
+    color: var(--light_mode_text);
+}
+#FullImgView.dark_mode{
+    background: var(--dark_mode_bg);
+    color: var(--dark_mode_text);
+}
+
+
+#FullImgView .top_bar{
+    max-height: 10vh;
+
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+#FullImgView .top_bar .back_button{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+#FullImgView .top_bar .back_button  img{
+    height: 42px;
+    width: 42px;
+    cursor: pointer;
+    background: rgba(128, 128, 128, 0.121);
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+    &:hover{
+        background: rgba(220, 220, 220, 0.121);
+    }
+}
+#FullImgView .top_bar .right_bar{
+    display: flex;
+    gap: 10px;
+}
+#FullImgView .top_bar .right_bar img{
+    height: 42px;
+    width: 42px;
+    cursor: pointer;
+    background: rgba(128, 128, 128, 0.121);
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+    &:hover{
+        background: rgba(220, 220, 220, 0.121);
+    }
+}
+
+#FullImgView .top_bar .right_bar .line_bar{
+    height: 100%;
+    width: 2px;
+    background: rgba(131, 131, 131, 0.237);
+    border-radius: 10px;
+}
+
+#FullImgView .main_full_img{
+    height: 80vh;
+    max-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#FullImgView .main_full_img img{
+    max-height: 90%;
+    max-width: 90%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.484);
+}
+
+
+
+
+#FullImgView .bottom_bar{
+    height: 10vh;
+    width: 100%;
+    /* background: violet; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 5px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    padding: 0px 50px;
+    margin-bottom: 5px;
+}
+#FullImgView .bottom_bar  img{
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    background: rgba(128, 128, 128, 0.121);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+    &:hover{
+        background: rgba(220, 220, 220, 0.121);
+    }
+}
+

@@ -3,20 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-:root {
-   --main_color: #855ba8;
-     /* --color_for_ui: #218e54;
-    --main_color_shado: #9b9b9b15;
-    --gray_text_color:rgb(121, 120, 120);
 
-    --dark_mode_bg:#202121;
-    --dark_mode_bg_2:#2c2c2c;
-    --dark_mode_text:white;
-    
-    --light_mode_bg:#fefefe;
-    --light_mode_bg_2:#f3f3f3;
-    --light_mode_text:rgb(0, 0, 0); */
-} 
 
 #main_call_con{
     height: 100vh;

@@ -16,6 +16,8 @@ const ShowLoder = () => {
         }
 
          .set_loder_page {
+          max-width: 100vw;
+          overflow: hidden;
           background: #aeaeae3a;
           position: absolute;
           top: 0;
