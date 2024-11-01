@@ -27,7 +27,7 @@ function HomePage() {
   // toggle menu for all file
   const [is_dark_mode, set_is_dark_mode] = useState('Dark');
   const [show_full_menu, set_show_full_menu] = useState(false);
-  const [active_page,set_active_page] = useState("Chats")
+  const [active_page,set_active_page] = useState("Chats");
 
   const [show_sub_pop_menu,set_show_sub_pop_menu] = useState({show_pop:false,pop_data:''});
   const [show_question_menu,set_show_question_menu] = useState(false);
@@ -76,8 +76,12 @@ function HomePage() {
   const attach_file_icon = require(`./Data/Home_page_data/${is_dark_mode}/attach-file.png`);
   const send_icon = require(`./Data/Home_page_data/${is_dark_mode}/send.png`);
   const back_icon = require(`./Data/Home_page_data/${is_dark_mode}/back.png`);
+
+  const tick_icon = require(`./Data/Home_page_data/${is_dark_mode}/check.png`);
+  const tick_true_icon = require(`./Data/Home_page_data/${is_dark_mode}/check_true.png`);
   
   const [reverser_messages, set_reverser_messages] = useState([]);
+  const[read_mes_id_list,set_read_mes_id_list] = useState([]);
   const [page_for_message, set_page_for_message] = useState(1);
   const [next_page_button,set_next_page_button] = useState(false);
 
@@ -260,11 +264,8 @@ function get_last_active_time(){
       hour12: true
   });
 
-  const formattedDate = date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-  });
+  const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
 
   return {
       time: time,
@@ -346,7 +347,6 @@ useEffect(()=>{
           : null,
   };
 
-  // Update the state with the new messages
   set_reverser_messages((prevMessages) => [...prevMessages, newMessages]);
   })
   return(()=>{
@@ -393,11 +393,11 @@ useEffect(()=>{
 },[current_active_room_data.active_email]);
 
 
-
 // add only ? active chat : show pop menu 
  useEffect(()=>{
    socket.on('data-updated',async (data)=>{
      const send_message_data = {
+        _id:data._id,
          sender_email:data.sender_email,
          receiver_email: data.receiver_email,
          message:data.message,
@@ -405,7 +405,7 @@ useEffect(()=>{
          is_read: data.is_read ,
          read_time:data.read_time, 
      }
-     // clint side 
+
      let add_new_message_to_chat_box = async () => {
          set_reverser_messages((prev_messages) => [...prev_messages,send_message_data]);   
 
@@ -486,12 +486,18 @@ async function fetch_chat_data_by_room_id(page,room_id, receiver_email, sender_e
     });
 
     if (!response.ok) {
+      set_reverser_messages([]);
+      set_next_page_button(false)
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
 
+
+    
+
     if (data.show_null){
+      set_reverser_messages([]);
       set_next_page_button(false)
       return ;
     }
@@ -499,6 +505,7 @@ async function fetch_chat_data_by_room_id(page,room_id, receiver_email, sender_e
     if (data.messages && data.messages.length > 0) {
       
       const newMessages = data.messages.map((mes) => ({
+        _id:mes._id,
         message: mes.message,
         receiver_email: mes.receiver_email,
         sender_email: mes.sender_email,
@@ -510,8 +517,9 @@ async function fetch_chat_data_by_room_id(page,room_id, receiver_email, sender_e
           ? `data:image/png;base64,${mes.chat_img_src}`
           : null,
       }));
-    
-      set_reverser_messages([])
+
+      
+      set_reverser_messages([]);
       set_reverser_messages((prevMessages) => [...prevMessages, ...newMessages]);
     }
     else {
@@ -588,7 +596,11 @@ const fetch_Next_Page = async () => {
 
 };
 
-
+function test(receiver_email){
+  let email = user_data_email
+  let sender_email = user_data_email
+  socket.emit("set_message_read",{email,sender_email,receiver_email});
+}
 
  // for cahge a chat room
  async function set_me_as_active_chat_room(sender_email,receiver_email){
@@ -613,11 +625,17 @@ const fetch_Next_Page = async () => {
             receiver_email
     );
 
+    test(receiver_email)
+
     set_message_loading(false);
-    chat_container_ref.current.style.scrollBehavior = 'auto';
-    setTimeout(() => {
-      chat_container_ref.current.style.scrollBehavior = 'smooth';
-    }, 100);
+    if(chat_container_ref.current){
+      chat_container_ref.current.style.scrollBehavior = 'auto';
+      setTimeout(() => {
+        if(chat_container_ref.current){
+        chat_container_ref.current.style.scrollBehavior = 'smooth';
+        }
+      }, 100);
+    }
  }
 
 // active user list
@@ -703,6 +721,25 @@ const fetch_Next_Page = async () => {
        
      )
  }
+
+ useEffect(()=>{
+  socket.on("send_me_as_read",(data)=>{
+    if(data.sender_email === current_active_room_data.active_email){
+      set_read_mes_id_list((prevList) => [
+        ...prevList,
+        ...(Array.isArray(data.list_of_updated_id) ? data.list_of_updated_id : [data.list_of_updated_id])
+    ]);
+    
+
+
+    }
+  })
+
+  return(()=>{
+    socket.off("send_me_as_read")
+  })
+ },[current_active_room_data.active_email])
+
 
  const handleRightClick = (event) => {
   event.preventDefault();
@@ -863,7 +900,7 @@ const fetch_Next_Page = async () => {
            throw new Error(`Error: ${response.statusText}`);
          }
    
-         const data = await response.json();
+        //  const data = await response.json();
          set_sender_imgs([]);
        } catch (error) {
          console.error('Error sending chat message:', error);
@@ -918,9 +955,6 @@ const fetch_Next_Page = async () => {
 
    
              <div className="top_menu_bar">
-               <img src={chat_menu_icon} alt="" />
-               <img src={chat_menu_icon} alt="" />
-               <img src={chat_menu_icon} alt="" />
              </div>
              <div className="main_img_pr">
                <div className="main_prv">
@@ -1132,7 +1166,8 @@ const fetch_Next_Page = async () => {
                         </div>
                       </div>
                       :
-                          get_last_active_time() || 
+                      userStatus==='Offline' ?
+                          get_last_active_time() :
                           <>
                           <div className={userStatus==='Offline' ? 'dot_red' :'dot_green'}></div> 
                           {userStatus}
@@ -1212,12 +1247,15 @@ const fetch_Next_Page = async () => {
 
                     reverser_messages.map((msg, index) => {
                         const {
+                            _id,
                             is_in_chat_img: is_chat,
                             chat_img_src: chat_url,
                             message,
                             send_time: time,
                             receiver_email: send_by_email,
+                            is_read
                         } = msg;
+                        
                       
                         const message_time = format_date_time(time);
                         const is_server_message = false;
@@ -1279,7 +1317,24 @@ const fetch_Next_Page = async () => {
                             }}>
                                 <div className={`text ${send_by_email === current_user_email ? 'receiving_con' : 'sending_con'} ${is_dark_mode === 'Light' ? 'light_mode' : 'dark_mode'}`}>
                                     <div className="text">{message}</div>
-                                    <div className="time">{message_time.time}</div>
+                                    <div className="time">
+                                      {message_time.time}
+                                      
+
+                                      {
+                                        send_by_email !== current_user_email 
+                                          && (is_read ? <img src={tick_true_icon} alt="Message read" /> 
+                                            
+                                            :
+                                            read_mes_id_list.includes(_id) 
+                                            ? <img src={tick_true_icon} alt="Message read" /> 
+                                            : <img src={tick_icon} alt="Message not read" />
+                                            )
+                                      }
+
+                                      
+                                    </div>
+                                    
                                 </div>
                             </div>
                         );

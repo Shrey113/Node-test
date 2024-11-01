@@ -502,6 +502,7 @@
     background: transparent;
     margin-bottom: 50px;
     scroll-behavior: smooth;
+    padding-bottom: 10px;
 }
 #main_chats_con .active_chat .main_chat .go_end_button{
     position: absolute;
@@ -716,61 +717,11 @@
 /*  */
 /*  */
 /* for sending */
-#main_chats_con .active_chat .main_chat .message_box_sending {
-    width: 100%;
-    padding: 10px 2px;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 10px;
-}
-
-.message_box_sending .sending_con{
-    min-width: 80px;
-    width: fit-content;
-    max-width: 50%;
-    padding: 5px 10px;
-    padding-bottom: 20px;
-    position: relative;
-    border-radius: 10px 0px 10px 10px;
-    margin-right: 12px;
-
-}
-.message_box_sending .sending_con.light_mode{
-    background: var(--send_message_light_bg);
-}
-.message_box_sending .sending_con.dark_mode{
-    background: var(--send_message_dark_bg);
-}
-
-.message_box_sending  .sending_con::after{
-    content: '';
-    position: absolute;
-    right: -10px;
-    top: 0px;
-    height: 15px;
-    width: 15px;
-    clip-path: polygon(0 0, 0 100%, 100% 0);
-}
-.message_box_sending .sending_con.light_mode::after{
-    background: var(--send_message_light_bg);
-}
-.message_box_sending .sending_con.dark_mode::after{
-    background: var(--send_message_dark_bg);
-}
 
 
 
-.message_box_sending .sending_con .text{
-    height: fit-content;
-    font-size: 1.1rem;
-    word-wrap: break-word;
-}
-.message_box_sending .sending_con .time{
-    position: absolute;
-    bottom: 0;
-    right: 5px;
-    font-size: 0.9rem;
-}
+
+
 
 /* for receivig */
 #main_chats_con .active_chat .main_chat .message_box_receiving {
@@ -778,25 +729,24 @@
     padding: 10px 2px;
     display: flex;
 }
-.message_box_receiving .receiving_con{
-    min-width: 90px;
+.message_box_receiving .receiving_con {
+    min-width: 100px;
     width: fit-content;
     max-width: 50%;
 
     padding: 5px 10px;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
     position: relative;
     border-radius: 0px 10px 10px 10px;
     margin-left: 12px;
 }
+
 .message_box_receiving .receiving_con.light_mode{
     background: var(--receiving_message_light_bg);
 }
 .message_box_receiving .receiving_con.dark_mode{
     background: var(--receiving_message_dark_bg);
 }
-
-
 .message_box_receiving  .receiving_con::after{
     content: '';
     position: absolute;
@@ -813,19 +763,73 @@
     background: var(--receiving_message_dark_bg);
 }
 
-.message_box_receiving  .text{
+
+
+#main_chats_con .active_chat .main_chat .message_box_sending {
+    width: 100%;
+    padding: 10px 2px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.message_box_sending .sending_con{
+    min-width: 100px;
+    width: fit-content;
+    max-width: 50%;
+    padding: 5px 10px;
+    padding-bottom: 26px;
+    position: relative;
+    border-radius: 10px 0px 10px 10px;
+    margin-right: 12px;
+
+}
+
+.message_box_sending .sending_con.light_mode{
+    background: var(--send_message_light_bg);
+}
+.message_box_sending .sending_con.dark_mode{
+    background: var(--send_message_dark_bg);
+}
+
+.message_box_sending  .sending_con::after{
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 0px;
+    height: 15px;
+    width: 15px;
+    clip-path: polygon(0 0, 0 100%, 100% 0);
+}
+
+
+.message_box_sending .sending_con.light_mode::after{
+    background: var(--send_message_light_bg);
+}
+.message_box_sending .sending_con.dark_mode::after{
+    background: var(--send_message_dark_bg);
+}
+
+
+.message_box_receiving  .text , .message_box_sending .sending_con .text{
     height: fit-content;
     font-size: 1.1rem;
     word-wrap: break-word;
 }
-.message_box_receiving  .time{
+.message_box_receiving  .time ,.message_box_sending .sending_con .time{
     position: absolute;
     bottom: 0;
     right: 5px;
     font-size: 0.9rem;
     user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
-
+.message_box_receiving  .time img , .message_box_sending .sending_con .time img{
+    height: 17px;
+}
 
 
 
@@ -862,7 +866,7 @@
 /* sender img */
 /* sender img */
 /* sender img */
-.message_box_img_sender{
+.message_box_img_sender ,.message_box_img_receiving{
     height: fit-content;
     width: 100%;
     padding: 10px;
@@ -871,13 +875,20 @@
     flex-direction: column;
     align-items: flex-end;
     cursor: pointer;
+    padding-right: 20px;
 }
-.message_box_img_sender .img_con{
+
+.message_box_img_receiving{
+    padding: 10px;
+    align-items: flex-start;
+}
+
+.message_box_img_sender .img_con ,.message_box_img_receiving .img_con{
     height: 400px;
     /* min-height: fit-content; */
     max-height: 600px;
     width: 400px;
-    padding: 10px;
+    padding: 7px;
     border-radius: 5px;
     right: 0;
 
@@ -891,111 +902,39 @@
     align-items: center;
     padding-bottom: 30px;
 }
-.message_box_img_sender .img_con .message{
+.message_box_img_sender .img_con .message ,.message_box_img_receiving .img_con .message{
     padding-left: 10px;
     width: 100%;
     margin-top: 10px;
 }
-.message_box_img_sender .img_con img{
+.message_box_img_sender .img_con img , .message_box_img_receiving .img_con img{
     height: 100%;
     width: 100%;
     object-fit: contain;
     transition: all 0.5s;
     background: rgba(128, 128, 128, 0.293);
-
+    padding: 5px;
 }
 
-.message_box_img_sender .img_con.dark_mode{
+
+.message_box_img_sender .img_con.dark_mode , .message_box_img_receiving .img_con.dark_mode{
     background: var(--send_message_dark_bg);
 }
-.message_box_img_sender .img_con.light_mode{
+.message_box_img_sender .img_con.light_mode , .message_box_img_receiving .img_con.light_mode{
     background: var(--send_message_light_bg);
 }
-.message_box_img_sender img{
+.message_box_img_sender img , .message_box_img_receiving img{
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: 5px;
 }
-.message_box_img_sender .img_con .time{
+.message_box_img_sender .img_con .time ,.message_box_img_receiving .img_con .time{
     position: absolute;
     bottom: 0;
     right: 0;
     padding: 5px;
 }
-/*  */
-/*  */
-/*  */
-
-/*  */
-/*  */
-/*  */
-.message_box_img_receiving{
-    height: fit-content;
-    width: 100%;
-    padding: 10px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    cursor: pointer;
-}
-.message_box_img_receiving .img_con{
-    height: 400px;
-    /* min-height: fit-content; */
-    max-height: 600px;
-    width: 400px;
-    padding: 10px;
-    border-radius: 5px;
-    right: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.5s;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 30px;
-}
-.message_box_img_receiving .img_con .message{
-    padding-left: 10px;
-    width: 100%;
-    margin-top: 10px;
-}
-.message_box_img_receiving .img_con img{
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    transition: all 0.5s;
-    background: rgba(128, 128, 128, 0.293);
-
-}
-
-
-.message_box_img_receiving .img_con.dark_mode{
-    background: var(--receiving_message_dark_bg);
-}
-.message_box_img_receiving .img_con.light_mode{
-    background: var(--receiving_message_light_bg);
-}
-.message_box_img_receiving img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 5px;
-}
-.message_box_img_receiving .img_con .time{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 5px;
-}
-/*  */
-/*  */
-/*  */
-
 
 #right_click_menu{
     position: fixed;

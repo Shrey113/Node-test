@@ -2,7 +2,6 @@ import {React,useState,useRef, useEffect} from 'react'
 import '../css_files/HomePageSubMenu.css'
 import FullImgView from './FullImgView';
 import ShowQuestionPop from './ShowQuestionPop';
-// import ShowQuestionPop from './ShowQuestionPop';
 
 import { client_data,update_client_data} from './../Clint_data';
 
@@ -307,7 +306,23 @@ const ProfileInfo = ()=>{
             <div className="line_div"></div>
             <div className="last_message">
                 <div className="buttons_con">
-                    <button onClick={logout_user} className={`button_log_out ${dark_mode_stat === 'Light' ? 'light_mode' : 'dark_mode'}`}>
+                    <button onClick={()=>{
+
+                    set_show_question_menu(true)
+                    set_show_question_menu_data({
+                        title:"Are you sure logout?",
+                        message:``,
+                        no_button_fun:()=>{set_show_question_menu(false)},
+                        yes_button_fun:()=>{
+                            set_show_question_menu(false)
+                            logout_user();
+                        }
+                    })
+
+                    }
+
+
+                    } className={`button_log_out ${dark_mode_stat === 'Light' ? 'light_mode' : 'dark_mode'}`}>
                         Log out
                     </button>
                     <button onClick={logout_user} className={`change_password ${dark_mode_stat === 'Light' ? 'light_mode' : 'dark_mode'}`}>
