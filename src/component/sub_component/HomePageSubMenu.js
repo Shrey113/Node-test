@@ -79,7 +79,7 @@ const ProfileInfo = ()=>{
     async function remove_profile_image(email) {
         try {
             set_loader_profile_con(true)
-          const response = await fetch('http://localhost:4000/remove_profile_img', {
+          const response = await fetch('https://test-node-90rz.onrender.com/remove_profile_img', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -103,8 +103,8 @@ const ProfileInfo = ()=>{
             set_loader_profile_con(false)
           }
         } catch (error) {
+            set_loader_profile_con(false)
           console.error('Error:', error.message);
-          set_loader_profile_con(false)
         }
       }
       
@@ -137,7 +137,7 @@ const ProfileInfo = ()=>{
                 set_loader_email_pen(true)
             }
             try {
-              const response = await fetch('http://localhost:4000/update-user', {
+              const response = await fetch('https://test-node-90rz.onrender.com/update-user', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
@@ -167,6 +167,9 @@ const ProfileInfo = ()=>{
                 set_loader_email_pen(false)
                 }
             } catch (error) {
+                set_loader_name_pen(false)
+                set_loader_About_pen(false)
+                set_loader_email_pen(false)
               console.error('Error updating user:', error);
             }
           }
@@ -201,7 +204,7 @@ const ProfileInfo = ()=>{
                 set_loader_profile_con(true)
                 const base64Image = await convertToBase64(file);
                 
-                const response = await fetch('http://localhost:4000/uploads', {
+                const response = await fetch('https://test-node-90rz.onrender.com/uploads', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -379,7 +382,7 @@ const GeneralInfo = ()=>{
     },[])
 
     function un_block(email){
-        fetch('http://localhost:4000/unblock_user_by_email', {
+        fetch('https://test-node-90rz.onrender.com/unblock_user_by_email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
