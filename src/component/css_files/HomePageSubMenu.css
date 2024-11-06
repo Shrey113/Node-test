@@ -166,6 +166,24 @@
     border-radius: 50%;
     cursor: pointer;
 }
+#HomePageSubMenu .user_sub_menu .info_section .info_data .profile_con.active::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.3),
+        rgba(128, 128, 128, 0.1),
+        rgba(101, 101, 101, 0.364)
+      );
+    background-size: 200% 10%;
+    animation: gradientShift 3s linear infinite alternate;
+    cursor: default;
+}
 #HomePageSubMenu .user_sub_menu .info_section .info_data .profile_con .profile{
     height: 100%;
     width: 100%;
@@ -247,8 +265,37 @@
 
     justify-content: space-between;
 
-
+    position: relative;
 }
+@keyframes gradientShift {
+    0% {
+      background-position: 0% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+
+
+#HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con.active::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.3),
+        rgba(128, 128, 128, 0.1),
+        rgba(101, 101, 101, 0.167)
+      );
+    background-size: 200% 100%;
+    animation: gradientShift 3s linear infinite alternate;
+}
+
 
 #HomePageSubMenu .user_sub_menu .info_section .info_data .item_pen_con img{
     height: 35px;

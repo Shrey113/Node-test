@@ -59,10 +59,14 @@ const ProfileInfo = ()=>{
     const[user_About,set_user_About] = useState('')
     const[user_email,set_user_email] = useState('')
 
-
     const[edit_name_pen,set_edit_name_pen] = useState(false)
-    const[edit_About_pen,set_edit_About_pen] = useState(false)
     const[edit_email_pen,set_edit_email_pen] = useState(false)
+    const[edit_About_pen,set_edit_About_pen] = useState(false)
+
+    const[loader_name_pen,set_loader_name_pen] = useState(false)
+    const[loader_email_pen,set_loader_email_pen] = useState(false)
+    const[loader_About_pen,set_loader_About_pen] = useState(false)
+    const[loader_profile_con,set_loader_profile_con] = useState(false)
 
 
     const user_name_Ref = useRef(null);
@@ -74,7 +78,8 @@ const ProfileInfo = ()=>{
    
     async function remove_profile_image(email) {
         try {
-          const response = await fetch('https://test-node-90rz.onrender.com/remove_profile_img', {
+            set_loader_profile_con(true)
+          const response = await fetch('http://localhost:4000/remove_profile_img', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -84,6 +89,7 @@ const ProfileInfo = ()=>{
       
           if (!response.ok) {
             const errorData = await response.json();
+            set_loader_profile_con(false)
             throw new Error(errorData.message || 'Error removing profile image');
           }
       
@@ -91,11 +97,14 @@ const ProfileInfo = ()=>{
           if(data.message === 'Profile image removed successfully'){
             set_user_data_profile_img(false)
             set_show_profile_pop(false)
+            set_loader_profile_con(false)
           }else{
             alert("remove profile Error")
+            set_loader_profile_con(false)
           }
         } catch (error) {
           console.error('Error:', error.message);
+          set_loader_profile_con(false)
         }
       }
       
@@ -118,8 +127,17 @@ const ProfileInfo = ()=>{
         },[])
   
         async function updateUser(data,update_key) {
+            if(update_key === "username"){
+                set_loader_name_pen(true)
+            }
+            if(update_key === "about_user"){
+                set_loader_About_pen(true)
+            }
+            if(update_key === "email"){
+                set_loader_email_pen(true)
+            }
             try {
-              const response = await fetch('https://test-node-90rz.onrender.com/update-user', {
+              const response = await fetch('http://localhost:4000/update-user', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
@@ -136,12 +154,18 @@ const ProfileInfo = ()=>{
                 await update_client_data(update_key,updatedUser.username)
                 set_user_old_data_user_name(client_data.username);
                 set_user_name(client_data.username);
+                set_loader_name_pen(false)
               }
               if(update_key === "about_user"){
                 await update_client_data(update_key,updatedUser.about_user);
                 set_user_old_data_user_About(client_data.about_user);
                 set_user_About(client_data.about_user);
-              }
+                set_loader_About_pen(false)
+              } 
+
+              if(update_key === "email"){
+                set_loader_email_pen(false)
+                }
             } catch (error) {
               console.error('Error updating user:', error);
             }
@@ -166,7 +190,7 @@ const ProfileInfo = ()=>{
 //  for get and set file - 2      
       const handle_image_upload_profile = async (event, email) => {
         const file = event.target.files[0];
-    
+        
         if (email !== user_old_data_email) {
             alert("Email ID must be verified");
             return;
@@ -174,9 +198,10 @@ const ProfileInfo = ()=>{
     
         if (file) {
             try {
+                set_loader_profile_con(true)
                 const base64Image = await convertToBase64(file);
                 
-                const response = await fetch('https://test-node-90rz.onrender.com/uploads', {
+                const response = await fetch('http://localhost:4000/uploads', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -189,11 +214,14 @@ const ProfileInfo = ()=>{
                 if (data.message === 'Profile image updated successfully') {
                     await update_client_data("profile_image",data.user.profile_image)
                     set_user_data_profile_img(client_data.profile_image_url);
+                    set_loader_profile_con(false)
                 } else {
                     console.error('Error uploading image:', data.message);
+                    set_loader_profile_con(false)
                 }
             } catch (error) {
                 console.error('Error during image upload:', error);
+                set_loader_profile_con(false)
             }
         }
     };
@@ -220,7 +248,7 @@ const ProfileInfo = ()=>{
         <div className="info_title">{active_page}</div>
         <div className="info_data">
 
-            <div className="profile_con" onMouseLeave={()=>{set_show_profile_pop(false)}}>
+            <div className={`profile_con ${loader_profile_con && 'active'}`} onMouseLeave={()=>{set_show_profile_pop(false)}}>
                     <input type="file" accept='image/*' onChange={(e)=>{handle_image_upload_profile(e,user_email)}}
                              id="handel_img_input" style={{display:"none"}} />
 
@@ -252,7 +280,7 @@ const ProfileInfo = ()=>{
 
             </div>
             {/* input == Name */}
-            <div className="item_pen_con">
+            <div className={`item_pen_con ${loader_name_pen && 'active'}`}>
                 <div className="data">
                     <input ref={user_name_Ref} type="text" value={user_name} onChange={(e)=>{set_user_name(e.target.value)}} 
                         className={` ${edit_name_pen && 'active'} ${dark_mode_stat === 'Light' ? 'set_Light_input' : 'set_dark_input'}`} 
@@ -270,13 +298,14 @@ const ProfileInfo = ()=>{
             </div>
 
             {/* textarea == about */}
-            <div className="item_pen_con">
+            <div className={`item_pen_con ${loader_About_pen && 'active'}`}>
                 <div className="data">
                     <div className="title">About</div>                    
                     <textarea ref={user_About_Ref} value={user_About} onChange={(e)=>{set_user_About(e.target.value);}}
                             className={` ${edit_About_pen && 'active'} ${dark_mode_stat === 'Light' ? 'set_Light_input' : 'set_dark_input'}`}
                             style={{height: `${Math.max(40, user_About.split('\n').length * 24)}px`,}} onBlur={()=>{set_edit_About_pen(false)}} 
-                            placeholder='Add about you'/>
+                            placeholder='Add about you' readOnly={!edit_About_pen}
+                            />
                 </div>
                 {user_old_data_user_About === user_About ?
                 <img src={pen_icon} alt="" onClick={()=>{set_edit_About_pen(true);
@@ -289,7 +318,7 @@ const ProfileInfo = ()=>{
             </div>
             
             {/* input == email */}
-            <div className="item_pen_con">
+            <div className={`item_pen_con ${loader_email_pen && 'active'}`}>
                 <div className="data">
                     <div className="title">Email ID</div>
                     <input ref={user_email_Ref} type="text" value={user_email} onChange={(e)=>{set_user_email(e.target.value)}} 
@@ -350,7 +379,7 @@ const GeneralInfo = ()=>{
     },[])
 
     function un_block(email){
-        fetch('https://test-node-90rz.onrender.com/unblock_user_by_email', {
+        fetch('http://localhost:4000/unblock_user_by_email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
